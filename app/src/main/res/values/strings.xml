@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TodoApp</string>
+    <string name="hello_world">Hello world!!!</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="login_in">Iniciando sesión!</string>
 </resources>
