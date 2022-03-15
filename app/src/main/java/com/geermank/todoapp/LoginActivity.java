@@ -1,8 +1,6 @@
 package com.geermank.todoapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import com.geermank.todoapp.main.MainActivity;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvWelcomeMessage, tvTermsAndConditions;
     private EditText etEmail, etPassword;
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         tvWelcomeMessage = findViewById(R.id.tv_welcome_message);
         tvTermsAndConditions = findViewById(R.id.tv_terms_and_conditions);
@@ -43,8 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void login() {
-        String email = etEmail.getText().toString();
-        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        startActivity(mainIntent);
+        finish();
     }
 
     private void openTermsAndConditions() {
