@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_task_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/purple_500"
+        tools:text="Tarea 1"
+        android:padding="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_task_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Descripción de la tarea 1"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="16dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
