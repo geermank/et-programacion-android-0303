@@ -1,16 +1,21 @@
 package com.geermank.todoapp.main;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.geermank.todoapp.AddTaskActivity;
 import com.geermank.todoapp.R;
 
 import java.util.ArrayList;
@@ -62,5 +67,25 @@ public class MainActivity extends AppCompatActivity implements OnTaskClickListen
         Task task = new Task(4, "Ir al médico", "Hace rato no voy");
         tasksAdapter.addNewTask(task);
         Toast.makeText(this, "Tarea agregada!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_add_task) {
+            navigateToAddTaskActivity();
+        } else {
+            Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void navigateToAddTaskActivity() {
+        startActivity(new Intent(this, AddTaskActivity.class));
     }
 }
