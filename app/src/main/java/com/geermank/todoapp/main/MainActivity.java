@@ -16,7 +16,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.geermank.todoapp.AddTaskActivity;
+import com.geermank.todoapp.LoginActivity;
 import com.geermank.todoapp.R;
+import com.geermank.todoapp.settings.UserCredentials;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,9 +82,20 @@ public class MainActivity extends AppCompatActivity implements OnTaskClickListen
         if (item.getItemId() == R.id.action_add_task) {
             navigateToAddTaskActivity();
         } else {
-            Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
+            logout();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        new UserCredentials(this).delete();
+        navigateToLoginActivity();
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void navigateToAddTaskActivity() {
