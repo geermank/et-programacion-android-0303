@@ -16,4 +16,26 @@
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
         app:popupTheme="@style/Theme.MaterialComponents.Light"/>
 
+    <EditText
+        android:id="@+id/et_task_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task title"
+        android:layout_margin="@dimen/margin_medium"/>
+
+    <EditText
+        android:id="@+id/et_task_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Description"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add task"
+        android:layout_marginHorizontal="@dimen/margin_medium"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>

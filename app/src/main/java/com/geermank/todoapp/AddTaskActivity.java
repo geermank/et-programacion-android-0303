@@ -1,25 +1,51 @@
 package com.geermank.todoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddTaskActivity extends AppCompatActivity {
+public class AddTaskActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private EditText etTitle, etDescription;
+    private AppCompatButton btnAddTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
+        etTitle = findViewById(R.id.et_task_title);
+        etDescription = findViewById(R.id.et_task_description);
+        btnAddTask = findViewById(R.id.btn_add_task);
+        btnAddTask.setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Agregar nueva tarea");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onClick(View v) {
+        String title = etTitle.getText().toString();
+        String description = etDescription.getText().toString();
+
+        Intent resultData = new Intent();
+        resultData.putExtra(Constants.TASK_TITLE, title);
+        resultData.putExtra(Constants.TASK_DESC, description);
+
+        Toast.makeText(this, "Tarea creada!", Toast.LENGTH_SHORT).show();
+
+        setResult(RESULT_OK, resultData);
+        finish();
     }
 
     @Override
