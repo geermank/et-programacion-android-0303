@@ -25,6 +25,11 @@ import com.geermank.todoapp.Constants;
 import com.geermank.todoapp.LoginActivity;
 import com.geermank.todoapp.R;
 import com.geermank.todoapp.settings.UserCredentials;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements OnTaskClickListen
 
     private Button btnAddTask;
     private TasksAdapter tasksAdapter;
+    private AdView mainActivityBanner;
 
     private ActivityResultLauncher<Intent> addTaskLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
@@ -76,6 +82,19 @@ public class MainActivity extends AppCompatActivity implements OnTaskClickListen
         if (actionBar != null) {
             actionBar.setTitle("Mis tareas");
         }
+
+        mainActivityBanner = findViewById(R.id.adView);
+        showAds();
+    }
+
+    private void showAds() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mainActivityBanner.loadAd(adRequest);
+            }
+        });
     }
 
     @Override
