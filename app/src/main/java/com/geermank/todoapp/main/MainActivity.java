@@ -119,10 +119,11 @@ public class MainActivity extends AppCompatActivity implements OnTaskClickListen
 
     private void navigateToAddTaskActivity() {
         Intent intent = new Intent(this, AddTaskActivity.class);
-        //addTaskLauncher.launch(intent);
-        startActivityForResult(intent, 1001);
+        addTaskLauncher.launch(intent);
+        //startActivityForResult(intent, 1001);
     }
 
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -135,5 +136,5 @@ public class MainActivity extends AppCompatActivity implements OnTaskClickListen
         } else if (requestCode == 1002) {
             // TODO implementar
         }
-    }
+    }*/
 }
